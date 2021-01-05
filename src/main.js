@@ -3,6 +3,12 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
+// !将刚才编写的axis进行导入
+import axios  from '@/api/http'
+// 需要将对应的内容挂在到vue的原型上（后续使用的时候不需要每次都import）
+// ! $http是名称   this.$http = axios
+Vue.prototype.$http = axios
+
 Vue.config.productionTip = false
 
 new Vue({
