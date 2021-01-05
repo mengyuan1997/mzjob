@@ -2,7 +2,7 @@
 // ? 集中管理地址，效率高
 
 // todo 定义代理前缀
-let prefix = "/api/"
+let prefix = "/api"
 //  todo 模块化思想进行导出
 export default {
     // *获取城市的信息
