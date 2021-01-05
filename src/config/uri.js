@@ -2,6 +2,7 @@
 // ? 集中管理地址，效率高
 
 // todo 定义代理前缀
+// * api 相当于是 https://api.iynn.cn/film/api/v1   是一个代理
 let prefix = "/api"
 //  todo 模块化思想进行导出
 export default {
