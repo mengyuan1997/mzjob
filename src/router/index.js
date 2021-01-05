@@ -4,6 +4,14 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
 
+// !导入路由需要的组件
+import Films  from '@/views/Films/Index'//电影父组件
+import  NowPlaying from '@/views/Films/NowPlaying'//电影正在上映组件
+import  ComingSoon from '@/views/Films/ComingSoon'//电影即将上映组件
+import  Detail from '@/views/Films/Detail'//电影详情页组件
+import  Cinemas from '@/views/Cinemas/Index'//影院组件
+import  Center from '@/views/Center/Index'//我的组件
+
 const routes = [
   // !设置重定向
   {
@@ -25,12 +33,14 @@ const routes = [
    children:[
     {
       // !需要注意：子路由的path中的路径不能添加“/”，否则会报错，添加/后表示从根开始查找
+      // ?正在热映路由
       path:"nowPlaying",
-      component:nowPlaying,
+      component:NowPlaying,
     },
     {
+      // ?即将上映路由
       path:"comingSoon",
-      component:comingSoon
+      component:ComingSoon
     }
    ]
 
@@ -63,6 +73,7 @@ const routes = [
     //    ** component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
     //   }
 ]
+// !编写完路由的规则之后在views里面创建组件，
 
 const router = new VueRouter({
   mode: 'history',
