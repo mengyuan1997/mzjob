@@ -101,6 +101,8 @@ export default {
           // 2 合并数据的方式，将数组进行展开，然后进行拼接
           // this.list = ret.data.films;
           this.list = [...ret.data.films,...this.list]
+          // console.log(this.list);
+          
           // 2 将数据合并之后，将默认的页数进行修改，为下一次做准备
           this.pageNum++
           }
