@@ -15,7 +15,7 @@
         </div>
 
         <!-- 商品信息，进行遍历 -->
-        <van-card v-for="item in list" :key="item.filmId">
+        <van-card v-for="item in list" :key="item.filmId" @click="goDetail(item.filmId)">
           <!-- 进行自定义设置图片 -->
           <template #thumb class="imgbox">
             <img :src="item.poster" width="66px" />
@@ -117,6 +117,11 @@ export default {
         this.isLoading2 = false
       });
     },
+    // 带有一个参数，用于接收id，通过id设置编程式导航，改变地址栏的地址
+    goDetail(filmId){
+      // 警告 在filmId前面或者地址后面不能添加冒号，在设置的时候需要添加冒号，在使用的时候不能添加冒号
+      this.$router.push("/film/" + filmId)
+    }
   },
   // !设置过滤器
   filters: {
