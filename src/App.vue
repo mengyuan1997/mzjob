@@ -2,9 +2,10 @@
   <div id="app">
     
 
-    <router-view/>
     <!-- 底部导航 使用单标签的时候必须带有/才可以-->
-    <Footer />
+    <Footer v-show="isShow"></Footer>
+    <router-view/>
+     
   </div>
 </template>
 
@@ -19,6 +20,12 @@
 import Footer  from '@/components/Navigation/Footer'
 
   export default {
+    // *创建数据，确定是否显示底部导航
+    data(){
+      return {
+        isShow:true
+      }
+    },
     // !导入之后先进性注册，然后在进行使用
     components:{
       Footer,
@@ -28,6 +35,13 @@ import Footer  from '@/components/Navigation/Footer'
     created(){
       // !测试网络请求是否能够使用
       // this.$http.get(uri.getCities).then(ret => console.log(ret));
-    }
+    // ! 监听导航是否开启事件，在生命周期中接受一个参数，用于接收子组件传递来的参数
+      this.$eventBus.$on("show_jiaojiao",(flag) => {
+        // *修改是否显示
+        this.isShow = flag
+      })
+    },
+    
+
   }
 </script>

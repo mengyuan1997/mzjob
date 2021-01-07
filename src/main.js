@@ -9,6 +9,9 @@ import axios  from '@/api/http'
 // ! $http是名称   this.$http = axios
 Vue.prototype.$http = axios
 
+// *定义事件中心
+Vue.prototype.$eventBus = new Vue()
+
 Vue.config.productionTip = false
 
 new Vue({
