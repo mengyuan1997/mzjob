@@ -1,6 +1,6 @@
 <template>
   <!-- 设置HTML结构 -->
-  <div >
+  <div>
     <!-- 用于显示最上面的海报图片 -->
     <div class="poster">
       <button class="ret" @click="goBack"></button>
@@ -18,17 +18,17 @@
         <!--3.3 这里使用的数据中心的数据，知己使用能够实现，但是会报错，因此在data接受到的数据中定义一下  -->
         <span> {{ filmInfo.filmType.name }} </span>
         <i>{{ filmInfo.grade }}<em>分</em></i>
-        
       </div>
       <!-- 设置电影类型 -->
       <div class="movie">{{ filmInfo.category }}</div>
       <!-- 设置上映时间 -->
       <div class="movie">{{ filmInfo.premiereAt | parsePermiereAt }}上映</div>
       <!-- 设置上映地区和时长 -->
-      <div class="movie">{{ filmInfo.nation }} | {{ filmInfo.filmInfo }}分钟</div>
+      <div class="movie">
+        {{ filmInfo.nation }} | {{ filmInfo.filmInfo }}分钟
+      </div>
       <!-- 设置影片详情 -->
       <div class="synopsis">{{ filmInfo.synopsis }}</div>
-      
     </div>
     <!-- 用于显示演职人员 -->
     <div class="Actors">
@@ -41,7 +41,6 @@
           class="swiper-slide have"
           v-for="(item, index) in filmInfo.actors"
           :key="index"
-          
         >
           <img :src="item.avatarAddress" width="85" />
           <p>{{ item.name }}</p>
@@ -82,11 +81,11 @@ export default {
       filmInfo: { filmType: [], actors: [] },
     };
   },
-  methods:{
+  methods: {
     // *点击返回
-    goBack(){
+    goBack() {
       this.$router.back();
-    }
+    },
   },
   // 注册组件
   components: {
@@ -119,16 +118,13 @@ export default {
         }
       });
 
-      // *进入的时候将底部导航进行隐藏
-      this.$eventBus.$emit("show_jiaojiao",false)
-      
+    // *进入的时候将底部导航进行隐藏
+    this.$eventBus.$emit("show_jiaojiao", false);
   },
   // *在离开的时候将底部导航进行显示
-  beforeDestroy(){
-      this.$eventBus.$emit("show_jiaojiao",true)
-
+  beforeDestroy() {
+    this.$eventBus.$emit("show_jiaojiao", true);
   },
- 
 };
 </script>
 <style lang="scss" scoped>
@@ -139,16 +135,16 @@ export default {
   height: 210px;
   overflow: hidden;
   position: relative;
-  .ret{
-    background: url(https://img.rruu.net/image/5ff6c287e10d0) ;
+  .ret {
+    background: url(https://img.rruu.net/image/5ff6c287e10d0);
     background-size: 30px 30px;
     width: 30px;
     height: 30px;
     position: relative;
-    top:10px;
-    left:10px;
+    top: 10px;
+    left: 10px;
     z-index: 999;
-    border:0;
+    border: 0;
   }
   img {
     position: relative;
@@ -163,7 +159,7 @@ export default {
   height: 180px;
   padding: 12px 15px 0px 15px;
   box-sizing: border-box;
-  
+
   .title {
     width: 345px;
     font-size: 18px;
@@ -181,53 +177,51 @@ export default {
       padding: 0 2px;
       border-radius: 2px;
     }
-    i{
-      float:right;
+    i {
+      float: right;
       color: #ffb232;
       font-size: 18px;
       font-style: italic;
-      em{
-      font-style: none;
+      em {
+        font-style: none;
+      }
     }
-    }
-   
   }
-// 2 设置电影类型、上映时间、上映地区和时长
-.movie,.synopsis{
-  font-size: 13px;
+  // 2 设置电影类型、上映时间、上映地区和时长
+  .movie,
+  .synopsis {
+    font-size: 13px;
     color: #797d82;
     margin-top: 4px;
-}
-.synopsis{
-  height: 38px;
-margin-top:12px;
-overflow: hidden;
-text-align: justify;
-
-}
-
+  }
+  .synopsis {
+    height: 38px;
+    margin-top: 12px;
+    overflow: hidden;
+    text-align: justify;
+  }
 }
 // * 电影演职人员
-.Actors{
-  >p{
-//  width: 100%;
- padding:15px;
- font-size: 20px;
- line-height: 22px;
- margin: 0px;
+.Actors {
+  > p {
+    //  width: 100%;
+    padding: 15px;
+    font-size: 20px;
+    line-height: 22px;
+    margin: 0px;
   }
-  .have{
+  .have {
     display: flex;
     flex-direction: column;
-    >p{
+    > p {
       font-size: 12px;
-      margin-top:10px;
-      margin-bottom:0px;
-      color:#191a1b;
+      margin-top: 10px;
+      margin-bottom: 0px;
+      color: #191a1b;
     }
-    span{
+    span {
       font-size: 10px;
-    color: #797d82;
+      color: #797d82;
     }
   }
 }
