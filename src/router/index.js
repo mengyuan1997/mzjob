@@ -17,11 +17,20 @@ Vue.use(VueRouter)
 import filmRouter  from './routes/films'
 import cinemaRouter  from './routes/cinema'
 import centerRouter  from './routes/center'
+
+// 2 导入VueX组件
+import VuexCmp  from '@/views/Vuex'
+
 const routes = [
   // !设置重定向
   {
     path:"/",
     redirect:"/films/nowPlaying"
+  },
+  // *设置Vuex的路由
+  {
+    path:"/vuex",
+    component:VuexCmp
   },
   // 模块化
   ...filmRouter,//!因为是数组，因此需要进行展开

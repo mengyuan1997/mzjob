@@ -73,6 +73,9 @@ Vue.use(VueLazyload, {
 // 3.1 导入moment，进行整理上映时间
 import moment from "moment";
 
+// ?  控制底部导航是否显示，使用Vuex的map方法进行导入
+import { mapMutations }  from 'vuex'
+
 export default {
   data() {
     return {
@@ -82,6 +85,10 @@ export default {
     };
   },
   methods: {
+// * 进行映射，第一个参数表示模块名称，第二个是需要使用的方法
+...mapMutations("global",["setFooter"]),
+
+
     // *点击返回
     goBack() {
       this.$router.back();
@@ -119,11 +126,18 @@ export default {
       });
 
     // *进入的时候将底部导航进行隐藏
-    this.$eventBus.$emit("show_jiaojiao", false);
+    // this.$eventBus.$emit("show_jiaojiao", false);
+
+    // * 修改导航进行隐藏
+    this.setFooter(false)
   },
   // *在离开的时候将底部导航进行显示
   beforeDestroy() {
-    this.$eventBus.$emit("show_jiaojiao", true);
+    // this.$eventBus.$emit("show_jiaojiao", true);
+
+     // * 修改导航进行显示
+    this.setFooter(true)
+
   },
 };
 </script>

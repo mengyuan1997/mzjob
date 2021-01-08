@@ -10,7 +10,7 @@ import axios  from '@/api/http'
 Vue.prototype.$http = axios
 
 // *定义事件中心
-Vue.prototype.$eventBus = new Vue()
+// Vue.prototype.$eventBus = new Vue()
 
 Vue.config.productionTip = false
 
